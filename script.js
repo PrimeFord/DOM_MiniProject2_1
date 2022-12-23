@@ -1,38 +1,80 @@
-//1. Create an index.html file and put four p elements as above: Get the first paragraph by using document.querySelector(tagname) and tag name
-const para = document.querySelector("p");
-console.log(para);
+//1. Create a div container on HTML document and create 100 to 100 numbers dynamically and append to the container div.
 
-//2. Get each of the the paragraph using document.querySelector('#id') and by their id
-const paraone = document.querySelector("#one");
-console.log(paraone);
-const paratwo = document.querySelector("#two");
-console.log(paratwo);
-const parathree = document.querySelector("#three");
-console.log(parathree);
-const parafour = document.querySelector("#four");
-console.log(parafour);
+const bodyEl = document.querySelector("body");
+bodyEl.style.width = "100vw";
+bodyEl.style.fontFamily = "Segoe UI";
+bodyEl.style.cursor = "pointer";
+bodyEl.style.overflowX = "hidden";
 
-//3. Get all the p as nodeList using document.querySelectorAll(tagname) and by their tag name
-const pall = document.querySelectorAll("p");
-console.log(pall);
+const h1El = document.createElement("h1");
+h1El.textContent = "Number Generator";
+h1El.style.margin = "auto";
+h1El.style.width = "max-content";
+h1El.style.fontWeight = "600";
+bodyEl.appendChild(h1El);
 
-//4. Loop through the nodeList and get the text content of each paragraph
-for (let i = 0; i <= pall.length; i++) {
-  pall[i];
+const h2El = document.createElement("h2");
+h2El.textContent = "30DaysOfJavaScript:DOM Day 2";
+h2El.style.margin = "auto";
+h2El.style.width = "max-content";
+h2El.style.fontWeight = "400";
+h2El.style.textDecoration = "underline";
+h2El.style.fontSize = "1.3rem";
+bodyEl.appendChild(h2El);
+
+const h3El = document.createElement("h3");
+h3El.textContent = "Author:Asabeneh Yetayeh";
+h3El.style.margin = "auto";
+h3El.style.width = "max-content";
+h3El.style.fontWeight = "400";
+h3El.style.textDecoration = "underline";
+h3El.style.fontSize = "1rem";
+bodyEl.appendChild(h3El);
+
+const divEl = document.createElement("div");
+function isPrime(n) {
+  if (n < 2) {
+    return false;
+  }
+  if (n == 2) {
+    return true;
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
 }
+for (let i = 0; i <= 101; i++) {
+  const pEl = document.createElement("p");
+  pEl.textContent = i;
+  pEl.style.width = "100%";
+  pEl.style.color = "white";
+  pEl.style.height = "100%";
+  pEl.style.display = "flex";
+  pEl.style.fontSize = "1.2rem";
+  pEl.style.justifyContent = "center";
+  pEl.style.alignItems = "center";
+  if (i % 2 === 0) {
+    pEl.style.background = "green";
+  } else if (isPrime(i)) {
+    pEl.style.background = "red";
+  } else {
+    pEl.style.background = "yellow";
+  }
+  divEl.appendChild(pEl);
+}
+divEl.style.margin = "auto";
+divEl.style.width = "50%";
+// divEl.style.height = "100%";
+divEl.style.display = "grid";
+divEl.style.gridTemplateColumns = "repeat(6, 1fr)";
+divEl.style.gridTemplateRows = "repeat(17, 1fr)";
 
-//5. Set a text content to paragraph the fourth paragraph,Fourth Paragraph
-pall[3].textContent = "Fourth Paragraph";
+divEl.style.gridGap = "0.2rem";
+bodyEl.appendChild(divEl);
 
-//6. Set id and class attribute for all the paragraphs using different attribute setting methods
-pall[0].className = "paraclass1";
-pall[0].setAttribute("id", "first");
-
-pall[1].setAttribute("class", "paraclass2");
-pall[1].id = "second";
-
-pall[2].className = "paraclass3";
-pall[2].id = "third";
-
-pall[3].setAttribute("class", "paraclass4");
-pall[3].setAttribute("id", "fourth");
+//i. Even numbers background is green
+//ii. Odd numbers background is yellow
+//iii. Prime numbers background is red
